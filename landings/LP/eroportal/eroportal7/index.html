@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Портал для взрослых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div id="page_header">
+            <div id="navi_button">
+                <label for="menu_bt">
+                    <input id="menu_bt" type="checkbox">
+                    <span class="m_line">
+     </span>
+                    <span class="m_line">
+     </span>
+                    <span class="m_line">
+     </span>
+                </label>
+            </div>
+            <div id="logo">
+                <div aria-label="PORNO" class="logo_href">
+                    Эротический
+                    <img alt="" height="111" src="assets/images/logo-15.png" width="233">
+                    портал
+                </div>
+            </div>
+            <div id="search">
+                <span class="age">18+</span>
+            </div>
+            <script>
+                var menu_bt = document.getElementById('menu_bt');
+                var menu_items = document.getElementById('menu_items');
+                var menu_overlay = document.getElementById('menu_overlay');
+
+                menu_bt.addEventListener('click', function (event) {
+                    if (menu_bt.checked) {
+                        menu_items.style.transition = 'transform .4s';
+                        menu_items.classList.add('open_menu');
+                        menu_overlay.classList.add('open_menu');
+                    } else {
+                        menu_items.classList.remove('open_menu');
+                        menu_overlay.classList.remove('open_menu');
+                    }
+                })
+            </script>
+        </div>
+
+        <div class="tags">
+            <div class="tag">Видео</div>
+            <div class="tag">Популярное</div>
+            <div class="tag">Новое</div>
+        </div>
+        <div class="desc">Подборка видео для взрослых</div>
+
+        <div class="middle-box">
+            <div class="player">
+                <div class="th_icon">
+                    <div class="th_quality">
+                        HD
+                    </div>
+                    <div class="th_duration">
+                        20:15
+                    </div>
+                </div>
+                <div class="btn-box" v-show="!ageConfirm">
+                    <button class="btn" @click="toggleView" v-show="!ageConfirm">
+                        <span class="btn-text1">МНЕ ЕСТЬ 18 ЛЕТ</span>
+                    </button>
+                </div>
+                    <form id="finalize"
+                          action="/route"
+                          method="post"
+                          v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" :value="csrfToken">
+                            <input type="hidden" name="promoter_id" :value="promoterId">
+                            <input type="hidden" name="result" value="subscribed">
+                        </div>
+                        <button class="btn" @click="" v-show="ageConfirm">
+                            <span class="btn-text">Смотреть</span>
+                        </button>
+                    </form>
+
+            </div>
+            <div class="price-line">
+                <span class="price-fill">Стоимость — 30 ₽ в сутки со счета билайн</span>
+            </div>
+            <div class="banner"><img src="assets/images/banner.jpg" alt=""/></div>
+
+            <div class="social cla">
+                <div class="likes cla">
+                    <a class="like rateYes active down" data-rate="video:11169621:1">&nbsp;</a>
+                    <div class="procents">94%</div>
+                    <a class="dislike rateNo down" data-rate="video:11169621:0">&nbsp;</a>
+                </div>
+                <div class="other">
+                    <div class="time" itemprop="duration" content="T15M9S">15:09</div>
+                    <div class="views">18,088</div>
+                </div>
+            </div>
+
+            <div class="publish">Опубликовано <span>newsensations</span> 2 дня назад</div>
+            <div class="tags dc">
+                <div class="tag">Топ</div>
+                <div class="tag">Видео</div>
+                <div class="tag">Блондинки</div>
+            </div>
+            <div class="bid">
+                <img src="assets/images/img.png" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            Нажимая кнопку, вы подписываетесь на услугу "Эропортал".
+            Стоимость 30 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+            <a href="http://landing.beeline.ru/promoter/pages/eroportaladultxru/user_agreement.html">Пользовательское
+                соглашение</a>
+        </div>
+</div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

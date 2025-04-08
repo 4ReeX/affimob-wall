@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>КНИГИ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="http://landing.beeline.ru/assets/landings/beemafon/books-102-14/styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+    <style>
+
+        /* Анимация для fade-эффекта */
+        /* Анимация для fade-эффекта */
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.5s ease;
+        }
+
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
+        }
+
+        /* Стили для кнопок */
+        .btn {
+            transition: opacity 0.5s ease;
+        }
+        /* Скрываем кнопку */
+        .btn-hide {
+            display: none;
+        }
+
+        /* Анимация пульсации */
+        @keyframes pulse {
+            0% {
+                transform: scale(1); /* Нормальный размер */
+            }
+            50% {
+                transform: scale(1.1); /* Увеличение на 10% */
+            }
+            100% {
+                transform: scale(1); /* Возврат к нормальному размеру */
+            }
+        }
+
+        /* Применение анимации к кнопке */
+        .btn-pulse {
+            font-size: 21px!important;
+            animation: pulse 1.5s infinite; /* Бесконечная анимация с длительностью 1.5 секунды */
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <header></header>
+    <div class="btn-container">
+        <div class="title">
+            Книги 18+ <br>
+        </div>
+        <transition name="fade" @after-leave="showContinueButton">
+            <button
+                    class="btn ripple-button btn-pulse"
+                    @click="toggleView"
+                    v-if="!ageConfirm && !timerEnded && !isSwitching"
+            >
+                Пропустить рекламу через {{ timer }} сек.
+            </button>
+        </transition>
+        <transition name="fade">
+            <button
+                    class="btn ripple-button"
+                    @click="toggleView"
+                    v-if="showContinue"
+            >
+                Продолжить
+            </button>
+        </transition>
+        <a href="#" class="reject" @click="window.history.back()">Нет, я моложе</a>
+        <div class="price">
+            Стоимость 20Р/сутки со счета билайн
+        </div>
+    </div>
+    <div class="footer">
+        Нажимая кнопку, вы подписываетесь на услугу "книги билайн".
+        Стоимость 20 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+        <a href="https://books.beeline.ru/rules/policy.html">Пользовательское соглашение</a>
+    </div>
+</div>
+<a href="{offer_link}" class="btn-hide" id="offer-link"></a>
+<script src="js/main.js"></script>
+
+</body>
+</html>

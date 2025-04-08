@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Портал для взрослых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo">
+                Эротический <span>портал</span>
+                <div class="logo-desc">Видео для взрослых</div>
+            </div>
+            <div class="age">18+</div>
+            <div class="search">
+                <div class="search-input">Поиск по сайту...</div>
+            </div>
+        </div>
+
+        <div class="nav">
+            <div class="nav-item">Главная</div>
+            <div class="nav-item">Топ 100 видео по рейтингу</div>
+            <div class="nav-item">Топ&nbsp;фото</div>
+        </div>
+
+        <div class="middle-box">
+            <div class="player">
+                <img class="player-screen" src="assets/images/screen-transparent.png" alt="">
+				<div class="btn-box" v-show="!ageConfirm">
+					<button class="btn btn-submit" @click="toggleView" v-show="!ageConfirm">
+						Подтвердить cовершеннолетие
+					</button>
+					<div class="price-line">
+						<span class="price-fill" v-show="!ageConfirm">Cмотри в HD качестве вместе с билайн</span>
+					</div>
+				</div>
+				<form id="finalize"
+					  action="/route"
+					  method="post"
+					  v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+					<div class="form-group">
+						<input type="hidden" name="_token" :value="csrfToken">
+						<input type="hidden" name="promoter_id" :value="promoterId">
+						<input type="hidden" name="result" value="subscribed">
+					</div>
+					<button class="btn btn-submit" @click="" v-show="ageConfirm">
+						<span class="btn-text">Смотреть</span>
+					</button>
+					<div class="price-line">
+						<span class="price-fill" v-show="ageConfirm">Стоимость 20Р/сутки со счета билайн</span>
+					</div>
+				</form>
+                <div class="player-bar"><img src="assets/images/player.png" alt=""></div>
+            </div>
+
+            <div class="info">
+                <img class="info-vote" src="assets/images/likes.png" alt="">
+                <img class="info-rating" src="assets/images/rating.png" alt="">
+            </div>
+            <div class="info-text"><span>Жанр:</span><br>Большая грудь / Видео / Разное</div>
+
+            <div class="related">
+                <div class="related-item"><img src="assets/images/1.jpg" alt=""></div>
+                <div class="related-item"><img src="assets/images/2.jpg" alt=""></div>
+                <div class="related-item"><img src="assets/images/3.jpg" alt=""></div>
+                <div class="related-item"><img src="assets/images/4.jpg" alt=""></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Нажимая кнопку, вы подписываетесь на услугу "Эропортал".
+            Стоимость 30 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+            <a href="http://landing.beeline.ru/promoter/pages/eroportaladultxru/user_agreement.html">Пользовательское
+                соглашение</a>
+        </div>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

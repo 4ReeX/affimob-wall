@@ -1,0 +1,674 @@
+:root {
+    --background-color: #ffffff;
+    --background-second: #ffffffa;
+    --text-color: #ffffff;
+    --subtext-color: #ffffff;
+    --btn-bg-color: #FFE632;
+    --btn-bg-solid: #ace06d;
+    --bg-btn-block: rgba(59, 66, 94, 0.7);
+    --btn-text-color: #000000;
+}
+
+html, body, #app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+div#app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: auto 100%;
+    background: url(../assets/images/bg.jpeg) no-repeat right bottom;
+    transition: all 1s ease-in-out;
+    background-position-y: 120%;
+    background-position-x: -80px;
+    @media screen and (min-width: 668px) {
+        background-size: cover;
+        background-position-x: center;
+        background-position-y: 0;
+    }
+}
+
+div#app.center {
+    background-size: 120%;
+    background-position: center center;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.book-age {
+    font-size: 10px;
+}
+
+header {
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.headphones {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #FFE632;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+}
+.headphones img {
+    width: 100%;
+}
+
+.icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    right: 0;
+    bottom: 0;
+    opacity: 0; /* По умолчанию скрыты */
+    visibility: hidden; /* По умолчанию скрыты из визуального потока */
+    transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+}
+.fadeIn {
+    opacity: 1;
+    visibility: visible; /* Показываем элемент */
+    transition: opacity 1s ease-in-out, visibility 0s linear 0s;
+}
+
+.fadeOut {
+    opacity: 0;
+    visibility: hidden; /* Прячем элемент */
+    transition: opacity 1s ease-in-out, visibility 0s linear 01s;
+}
+
+.header-top .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-color);
+    width: 100%;
+}
+
+.header-top .logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.header-top .logo img {
+    width: 60%;
+    max-width: 300px;
+    display: block;
+}
+
+.book-container h1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+    text-align: center;
+    margin: 0 auto;
+    background: #000000;
+    color: #ffffff;
+}
+
+.book-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+    position: relative;
+}
+
+.player {
+    position: relative;
+    width: auto;
+    margin: 10px auto 0;
+    max-width: 280px;
+    z-index: 0;
+    height: 100%;
+    aspect-ratio: 1/1 !important;
+    background-size: contain;
+    max-height: 35vh;
+    min-height: 35vh;
+}
+
+.footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1;
+    background: var(--background-second);
+    color: rgb(170, 170, 170);
+    font-weight: 100;
+}
+
+form {
+    width: 100%;
+}
+
+.btn-container .btn, .btn-container form .btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+    width: 100%;
+    color: var(--btn-text-color);
+    margin: 0 0 14px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 15px;
+    background: var(--btn-bg-color);
+    font-size: 24px;
+}
+
+.btn .text, button .text {
+    color: rgba(61, 61, 61, 0.88);
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 27px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.btn .icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn .icon img {
+    width: 100%;
+}
+
+.btn-solid {
+    background-color: var(--btn-bg-solid);
+    color: white;
+    border-radius: 100px;
+    padding: 4px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+}
+
+
+.btn-container {
+    position: relative;
+    max-width: 400px;
+    width: 85%;
+    margin: 0 auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 20px 30px;
+    z-index: 1;
+    border-radius: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: var(--bg-btn-block);
+    border-left: 3px solid;
+}
+
+.btn-container .title {
+    color: var(--text-color);
+    font-size: 25px;
+    font-weight: 200;
+    line-height: 22px;
+    letter-spacing: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.btn-container .title span {
+    font-size: 16px;
+}
+
+.btn-confirm {
+    width: 100%;
+    background-color: #ec1367;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.reject {
+    color: #ffffff;
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration-line: underline;
+}
+
+@media (max-width: 479px) {
+    .right-nav img, .middle-nav img, .left-nav img {
+        max-height: 16px;
+        width: auto;
+    }
+}
+
+@media (max-width: 413px) {
+    .right-nav img, .middle-nav img, .left-nav img {
+        max-height: 14px;
+    }
+}
+
+@media screen and (orientation: landscape) and (min-height: 450px) {
+    body {
+        width: 640px;
+        margin: 0 auto
+    }
+
+}
+
+.price {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 19px;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+
+.post-like-counter span {
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.footer, .footer a {
+    font-size: 10px;
+    line-height: 1;
+    color: #7F7F7F;
+}
+
+@media screen and (max-height: 650px) {
+
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+}
+
+.header {
+    height: 70px;
+}
+
+.slogan {
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.btn-block {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0);
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.error-container.text-start {
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    z-index: 1;
+    top: 0;
+}
+
+.btn .text {
+    font-size: 2em;
+    color: #000000;
+    text-align: center;
+    font-weight: 800;
+}
+
+.form-block {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .75);
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+
+input.input {
+    background-color: #ffffff;
+    height: 45px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    border: none;
+    font-size: 18px;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 40px;
+}
+
+label {
+    text-align: center;
+    color: #ffffff;
+    padding: 2px 0;
+    font-weight: 300;
+}
+
+a.send-code {
+    font-size: 12px;
+    text-align: right;
+    color: #ffffff;
+}
+
+button.send-link.send-code {
+    background: none;
+    color: #ffffff;
+    border: none;
+    text-decoration: underline;
+    text-align: right;
+}
+
+.btn-confirm {
+    background-color: #00C142;
+    color: #ffffff;
+    border: none;
+    height: 45px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 40px;
+}
+
+.btn-confirm .text {
+    font-size: 1.5em;
+}
+
+@media screen and (max-width: 360px) and (max-height: 560px) {
+    input.input, a.btn-confirm {
+        height: 40px;
+    }
+
+}
+
+@media screen and (orientation: landscape) and (max-height: 360px) {
+    input.input, a.btn-confirm {
+        height: 30px;
+    }
+
+    .form-block {
+        padding: 0 20%;
+    }
+}
+
+@media screen and (min-height: 668px) {
+    .btn-container {
+        margin-top: 150px;
+    }
+
+    img.player {
+        min-width: 80%;
+        max-width: 80%;
+    }
+}
+
+@media screen and (max-height: 667px) {
+    div#app {
+        background-position-y: 80%;
+        background-position-x: -110px;
+    }
+    .btn-container {
+        margin-top: 190px;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    body {
+        overflow-y: auto;
+    }
+
+}
+
+@media screen and (orientation: landscape) and (max-height: 475px) {
+    body {
+        overflow-y: auto;
+    }
+
+    .player {
+        display: none;
+    }
+
+    .btn-container {
+        margin: 0 auto;
+        max-width: 500px;
+    }
+}
+
+.error-container.text-start {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    display: flex;
+    z-index: 1;
+    color: indianred;
+    bottom: -5px;
+    left: 0;
+    right: auto;
+    margin-top: -30px;
+    font-size: 11px;
+    max-width: 70%;
+    margin-left: -12px;
+    height: 20px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer {
+    background: #1D1D1D;
+    padding: 5px;
+}
+
+.footer a {
+    color: #7F7F7F;
+}
+
+.ripple-button {
+    overflow: hidden;
+    position: relative;
+}
+
+.ripple-button:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    animation: ripple 5s infinite;
+    pointer-events: none; /* Исключает волну из взаимодействий */
+    opacity: 0;
+}
+
+/* Анимация волны */
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(15);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0;
+    }
+}

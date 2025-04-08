@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyMood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header-top">
+            <div class="title">
+                книги
+            </div>
+            <div class="search-icon">
+                <img src="assets/images/search-icon.png" alt=""/>
+            </div>
+        </div>
+        <div class="header-menu" v-show="!isHidden">
+            <div class="btn-outline">
+                <div class="icon">
+                    <img src="assets/images/star.png" alt=""/>
+                </div>
+                <div class="text">
+                    Топ книг
+                </div>
+            </div>
+            <div class="btn-outline">
+                <div class="icon">
+                    <img src="assets/images/books.png" alt=""/>
+                </div>
+                <div class="text">
+                    Подборки
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="book-container">
+        <div class="row" v-show="!isHidden">
+            <div class="title">Черновик</div>
+            <div class="bestseller">
+                Бестселлер
+            </div>
+        </div>
+
+        <div class="book-row">
+            <div class="book-img" :class="{ full: isFull }">
+                <img src="assets/images/book.webp" alt=""/>
+            </div>
+            <div class="book-text" v-show="!isHidden">
+                <div class="author">
+                    Сергей Лукьяненко
+                </div>
+                <div class="book-age">
+                    Возрастное ограничение: 12+
+                </div>
+                <div class="book-description">
+                    В твоей квартире живут чужие люди. Твое место на работе занято другим… Тебя не узнают ни друзья, ни
+                    любимая девушка… Тебя стирают из этого мира. Кто?
+                </div>
+                <div class="btn-solid">
+                    фантастика
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-container">
+        <button class="btn ripple-button" @click="toggleView" v-show="!ageConfirm">К ПРОИЗВЕДЕНИЮ</button>
+        <form id="finalize"
+              action="/route"
+              method="post"
+              v-show="ageConfirm"
+        >
+            <div class="form-group">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <input type="hidden" name="promoter_id" :value="promoterId">
+                <input type="hidden" name="result" value="subscribed">
+            </div>
+            <button class="btn ripple-button">ЧИТАТЬ</button>
+        </form>
+        <a href="#" class="reject">Нет, посмотрю другие</a>
+        <div class="price">
+            Стоимость 20Р/сутки со счета билайн
+        </div>
+    </div>
+    <div class="another-books" v-show="!isHidden">
+        <div class="title">
+            Другие книги автора
+        </div>
+        <div class="books-row">
+            <div class="book">
+                <div class="book-img">
+                    <img src="assets/images/cover200_311570.jpg" alt=""/>
+                </div>
+                <div class="book-title">
+                    Донырнуть до звезд
+                </div>
+            </div>
+            <div class="book">
+                <div class="book-img">
+                    <img src="assets/images/cover200_293926.jpg" alt=""/>
+                </div>
+                <div class="book-title">
+                    Хозяин дорог
+                </div>
+            </div>
+            <div class="book">
+                <div class="book-img">
+                    <img src="assets/images/cover200_293913.jpg" alt=""/>
+                </div>
+                <div class="book-title">
+                   Девочка с китайскими зажигалками
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Нажимая кнопку, вы подписываетесь на услугу "книги билайн".
+        Стоимость 20 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+        <a href="https://books.beeline.ru/rules/policy.html"></a>Пользовательское соглашение
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>МелоКвиз</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header-top">
+            <div class="ui-block star">
+                <div class="icon"><img src="assets/images/icon_heart.svg" alt=""></div>
+                <div class="text">1600</div>
+            </div>
+            <div class="service-name logo">
+                <img src="assets/images/logo.png" alt=""/>
+            </div>
+            <div class="ui-block diamond">
+                <div class="icon "><img src="assets/images/icon_melocoin.svg" alt=""></div>
+                <div class="text">180</div>
+            </div>
+        </div>
+        <div class="top">
+            <img src="assets/images/puzzle.svg" alt=""/>
+        </div>
+    </header>
+    <div class="age-block" v-show="!ageConfirm">
+       <div class="popup">
+           <div class="popup-text">
+               <div class="logo">
+                   <img src="assets/images/logo.png" alt=""/>
+               </div>
+               <div class="popup-title">
+                   Приходи играть <br/>каждый день <br>
+                   <br/> <span> и забирай <span style="color: #FEF458;">крутые призы</span>  от билайна и его партнеров!</span>
+               </div>
+               <button class="btn ripple-button" @click="toggleView" v-show="!ageConfirm">
+                   <span class="btn-text">ПОНЯЛ</span>
+               </button>
+               <div class="price">
+                   Цена - 30 руб. в день со счета билайн
+               </div>
+           </div>
+       </div>
+
+    </div>
+    <div class="image-block">
+        <img src="assets/images/2.png" alt=""/>
+        <img src="assets/images/1.png" alt="" class="small"/>
+    </div>
+    <div class="btn-container" v-show="ageConfirm">
+        <form id="finalize"
+              action="/route"
+              method="post"
+              v-show="ageConfirm"
+        >
+            <div class="form-group">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <input type="hidden" name="promoter_id" :value="promoterId">
+                <input type="hidden" name="result" value="subscribed">
+            </div>
+            <button class="btn black ripple-button" @click="" v-show="ageConfirm">
+                <span class="btn-text">ИГРАТЬ</span>
+            </button>
+        </form>
+        <div class="price">
+            Цена - 30 руб. в день со счета билайн
+        </div>
+    </div>
+    <div class="footer">
+        ПАО “ВымпелКом" <br/>
+        <a href="https://meloquiz.beeline.ru/legal">Пользовательское соглашение</a>
+        <a href="https://static.beeline.ru/upload/images/politica22102021.pdf">Политика обработки данных</a>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

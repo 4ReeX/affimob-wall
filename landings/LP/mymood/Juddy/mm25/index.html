@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mymood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app" :class="isModal ? 'overlay' : ''">
+    <div class="modal" v-if="isModal">
+        <div class="modal-btn" @click="toggleView(users[Math.floor(Math.random() * users.length)])">
+            <span>Продолжить</span>
+        </div>
+        <div class="modal-price">Стоимость 30 ₽/сутки со счета билайн</div>
+    </div>
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <div class="logo-row">
+                    <img src="assets/images/logo.svg" alt="" class="logo-img"/>
+                    <div class="logo-text">Живое общение с моделями</div>
+                    <div class="age">18+</div>
+                </div>
+            </div>
+            <div class="search" v-show="!ageConfirm">
+                <div class="search-icon">
+                    <img src="assets/images/search.svg" alt=""/>
+                </div>
+                <div class="search-text">
+                    Поиск по моделям
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" v-show="!ageConfirm">
+        <div class="title">
+            Выберите кому написать
+        </div>
+        <div class="flex-row">
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-8.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-7.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-6.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-5.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-4.png") }}" alt="Avatar" class="avatar">
+                    <div class="status"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-3.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-2.png") }}" alt="Avatar" class="avatar">
+                    <div class="status"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4-1.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+            <div class="user-card">
+                <div class="ava"><img src="{{ asset("assets/landings/beelineru/{$landingId}/assets/images/ava4.png") }}" alt="Avatar" class="avatar">
+                    <div class="status online"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="btn-container" v-show="ageConfirm">
+        <div class="block-second dialog " v-if="dialogVisible">
+                <div class="dialog-content">
+                    <div class="ava">
+                        <img :src="currentUser.avatar" alt="Avatar" class="avatar">
+                        <div class="status" :class="{ online: currentUser.status }"></div>
+                    </div>
+                    <div class="column-block">
+                        <div class="nickname" v-text="currentUser.nickname"></div>
+                        <div class="phrase" style="color: #4C4D5C;">меньше минуты назад</div>
+                    </div>
+                </div>
+                <div class="today">Сегодня</div>
+            <div class="message-container">
+                <div v-for="(message, index) in messages" :key="index" class="chat">
+                    <div v-if="message.type === 'message'"
+                         :class="['message left', { active: activeMessages.includes(message) }]" v-text="message.text">
+                    </div>
+                    <div v-if="message.type === 'photo'"
+                         :class="['photo', { active: activeMessages.includes(message) }]" style="width: 100%;">
+                        <div class="blur" :class="{ open: timerFinished }"></div>
+                        <div class="circle-timer" :class="{ hidden: timerFinished }">
+                            <!-- Центральная иконка -->
+                            <div class="icon">
+                                <img src="assets/images/flame.svg" alt="Icon">
+                            </div>
+                            <!-- Прогресс-бар -->
+                            <svg class="progress-circle" :width="size" :height="size">
+                                <circle
+                                        class="progress-background"
+                                        :cx="center"
+                                        :cy="center"
+                                        :r="radius"
+                                        fill="none"
+                                        stroke="#eee"
+                                        :stroke-width="strokeWidth"
+                                ></circle>
+                                <circle
+                                        class="progress-bar"
+                                        :cx="center"
+                                        :cy="center"
+                                        :r="radius"
+                                        fill="none"
+                                        stroke="#ffffff"
+                                        :stroke-width="strokeWidth"
+                                        stroke-linecap="round"
+                                        :stroke-dasharray="circumference"
+                                        :stroke-dashoffset="dashOffset"
+                                ></circle>
+                            </svg>
+                        </div>
+                        <div class="time" :class="{ hidden: timerFinished }" v-text="duration"></div>
+                    </div>
+                    <div v-if="message.type === 'btnText'"
+                         :class="['btnText', { active: activeMessages.includes(message) }]" v-text="message.text">
+                    </div>
+                </div>
+            </div>
+
+            <form id="finalize"
+                  action="/route"
+                  method="post"
+                  v-show="ageConfirm">
+                <div class="form-group">
+                    <input type="hidden" name="_token" :value="csrfToken">
+                    <input type="hidden" name="promoter_id" :value="promoterId">
+                    <input type="hidden" name="result" value="subscribed">
+                </div>
+                <button class="btn" @click="" v-show="ageConfirm" :class="{ pulse: isButtonPulsing }">
+                    <span class="text">ПРОДОЛЖИТЬ</span>
+                </button>
+            </form>
+            </div>
+            <div class="price">
+                Стоимость 30 ₽/сутки со счета билайн
+            </div>
+        </div>
+
+    <div class="footer" v-show="!ageConfirm">
+        Доступ к материалам и сервису от 18 лет. Далее вам будет необходимо подтвердить, что вам исполнилось 18 лет.
+    </div>
+    <div class="footer" v-show="ageConfirm" >
+        Оплата списывается с основного лицевого счета (баланса) мобильного телефона.
+        Если у вас подключена услуга «Отдельный лицевой счёт для оплаты услуг провайдеров»,
+        то оплата за сервисы контент-провайдеров списывается с отдельного лицевого счёта (баланса) мобильного телефона».
+        Отключить подписку вы сможете бесплатно в любой момент. Нажимая
+        кнопку Смотреть вы подписываетесь на сервис MyMood, принимаете <a class="main_page_link" href="https://mymood.art/eula">Пользовательское
+        соглашение</a>
+        и <a class="main_page_link" href="http://mymood.fun/privacy-policy">Политику конфиденциальности</a>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

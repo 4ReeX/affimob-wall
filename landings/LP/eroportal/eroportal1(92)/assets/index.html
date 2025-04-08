@@ -1,0 +1,506 @@
+
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.2//EN" "http://www.openmobilealliance.org/tech/DTD/xhtml-mobile12.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>erolife</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #fff;
+            font-size: 10px;
+            line-height: 1;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Open Sans", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            text-align: center;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+        body, a {
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+        a {
+            text-decoration: underline;
+        }
+        .cla:after {
+            content: '';
+            clear: both;
+            display: table;
+        }
+
+        .wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            border-bottom: 3px solid #303030;
+            background: #f8f8f8;
+            padding: 5px 0;
+            text-align: left;
+            position: relative;
+        }
+        .header .logo {
+            padding-left: 45px;
+            width: 230px;
+            position: relative;
+            font-size: 22px;
+            line-height: 1.1;
+        }
+        .header .logo img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .header .logo:after {
+            content: '18+';
+            position: absolute;
+            top: 3px;
+            left: 0;
+            margin-left: 5px;
+            padding: 0 3px;
+            background: #e34449;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 24px;
+        }
+
+        .header .search {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 40px;
+            width: 40px;
+            background: url('images/search.png') center center no-repeat;
+            background-size: 36px auto;
+
+        }
+        .header .menu {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            background: url('images/menu.png') center center no-repeat;
+            background-size: 36px auto;
+        }
+        .header .menu:after {
+            content: '1';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            min-width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            background-color: #e34449;
+            color: #fff !important;
+            text-align: center;
+            font-size: 11px !important;
+            line-height: 16px;
+        }
+
+        .desc {
+            color: #333;
+            font-size: 10px;
+            text-align: left;
+            padding-left: 5px;
+            margin-bottom: 3px;
+        }
+        .tags {
+            text-align: left;
+            padding: 0 5px;
+        }
+        .tag {
+            display: inline-block;
+            margin: 0 5px 4px 0;
+            padding: 0 10px;
+            background: #dadada;
+            border-radius: 5px;
+            color: #303030;
+            font-size: 12px;
+            line-height: 24px;
+        }
+        .middle-box .tags {
+            text-align: center;
+        }
+
+
+
+        .middle-box {}
+        .player {
+            height: 260px;
+            background: url('images/player.jpg') center center no-repeat #000;
+            background-size: cover;
+            margin: 0 auto 52px;
+            position: relative;
+        }
+        .player-share {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 34px;
+            height: 34px;
+            background: url('images/share.png') center center no-repeat;
+            background-size: 20px 20px;
+        }
+        .player-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .player-bar_item {
+            float: left;
+            width: 25%;
+            height: 40px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: 14px auto;
+        }
+        .player-bar_item.i-1 { background-image: url('images/player-bar-1.png'); }
+        .player-bar_item.i-2 { background-image: url('images/player-bar-2.png'); }
+        .player-bar_item.i-3 { background-image: url('images/player-bar-3.png'); }
+        .player-bar_item.i-4 { background-image: url('images/player-bar-4.png'); }
+
+        .btn-box {
+            position: absolute;
+            bottom: -17px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            max-width: 400px;
+            width: 80%;
+            border: none;
+            border-radius: 38px;
+            border-radius: 13vh;
+            background: rgba(238, 238, 238, 0.99);
+            color: #424242;
+            font-size: 35px;
+            line-height: 75px;
+            line-height: 26vh;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 3em #fff;
+            margin-bottom: 2px;
+        }
+        .btn .btn-text {
+            display: inline-block;
+            background: url('images/play.png') right 50% no-repeat;
+            background-size: 54px 54px;
+            padding-right: 75px;
+        }
+        .price-line {
+            display: block;
+            color: #999;
+            font-size: 17px;
+            line-height: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .price-fill {
+            display: inline-block;
+            background: #eee;
+        }
+
+        .banner {
+            margin-bottom: 10px;
+        }
+        .banner img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .social {
+            max-width: 300px;
+            height: 36px;
+            margin: 0 auto 10px;
+            border: 1px solid #cecece;
+            border-radius: 3px;
+        }
+        .social .likes {
+            float: left;
+        }
+        .social .like {
+            display: block;
+            float: left;
+            width: 41px;
+            height: 34px;
+            border-right: 1px solid #cecece;
+            background: #f9f9f9;
+            line-height: 34px;
+            opacity: .5;
+        }
+        .social .like::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 21px;
+            height: 26px;
+            margin: 3px 0 0 10px;
+            background: url('images/like.png') no-repeat;
+            background-size: 21px 26px;
+            line-height: 26px;
+        }
+        .social .procents {
+            float: left;
+            width: 42px;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 34px;
+            color: #71932f;
+            text-align: center;
+        }
+        .social .dislike {
+            display: block;
+            float: left;
+            width: 43px;
+            height: 34px;
+            border-right: 1px solid #cecece;
+            border-left: 1px solid #cecece;
+            background: #f9f9f9;
+            line-height: 34px;
+            opacity: .5;
+        }
+        .social .dislike::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 21px;
+            height: 26px;
+            margin: 3px 0 0 10px;
+            background: url('images/dislike.png') no-repeat;
+            background-size: auto;
+            background-size: 21px 26px;
+            line-height: 26px;
+        }
+        .social .time {
+            display: inline-block;
+            margin-right: 13px;
+            font-size: 11px;
+            line-height: 35px;
+            color: #666;
+        }
+        .time::before {
+            content: '';
+            display: block;
+            float: left;
+            width: 13px;
+            height: 13px;
+            margin: 12px 3px 0 0;
+            background: url('images/duration.png') no-repeat;
+            background-size: auto;
+            background-size: 13px auto;
+        }
+        .social .views {
+            display: inline-block;
+            font-size: 11px;
+            line-height: 35px;
+            color: #666;
+        }
+        .social .views::before {
+            content: '';
+            display: block;
+            float: left;
+            width: 18px;
+            height: 22px;
+            margin: 12px 3px 0 0;
+            background: url('images/view.png') no-repeat;
+            background-size: auto;
+            background-size: 18px auto;
+        }
+
+        .publish {
+            color: #666;
+            font-size: 11px;
+            line-height: 12px;
+            margin: 10px 0;
+        }
+
+        .related {
+            padding: 15px 5px 0;
+        }
+        .related img {
+            float: left;
+            display: block;
+            width: 50%;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #9c9a9b;
+            font-size: 16px;
+            line-height: 0.9;
+            text-align: center;
+            box-sizing: border-box;
+            background: #fff;
+        }
+        .footer a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        @media (min-height: 460px) { /* iphone 5, 6 */
+            .btn {
+                line-height: 138px;
+                line-height: 26vh;
+                border-radius: 69px;
+                border-radius: 13vh;
+            }
+        }
+        @media (orientation: portrait) and (min-height: 559px) { /* iphone 6 */
+            .btn {
+                line-height: 166px;
+                line-height: 27vh;
+                border-radius: 83px;
+                border-radius: 15vh;
+            }
+        }
+
+        @media (orientation: portrait) and (max-height: 460px) {
+            .player {
+                height: 220px;
+            }
+        }
+        @media (orientation: portrait) and (max-height: 420px) {
+            .player {
+                height: 170px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 767px) {
+            .tags {
+                display: none;
+            }
+            .player {
+                height: 115px;
+            }
+            .btn {
+                max-width: 320px;
+                line-height: 80px;
+                border-radius: 40px;
+            }
+            .btn .btn-text {
+                background-size: 50px auto;
+            }
+        }
+        @media (orientation: landscape) and (max-width: 535px) {
+            .player {
+                height: 80px;
+            }
+            .btn {
+                line-height: 60px;
+                border-radius: 30px;
+            }
+            .btn .btn-text {
+                background-size: 30px auto;
+            }
+        }
+        @media (orientation: landscape) and (min-width: 768px) {
+            .wrapper {
+                left: 50%;
+                right: auto;
+                width: 800px;
+                margin-left: -400px;
+            }
+            .player {
+                height: 380px;
+            }
+            .btn {
+                max-width: 500px;
+            }
+        }
+    </style>
+
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="logo">ЭроЛайф</div>
+        <div class="search"></div>
+        <div class="menu"></div>
+    </div>
+    <div class="desc">Подборка видео для взрослых</div>
+    <div class="tags">
+        <div class="tag">Видео</div>
+        <div class="tag">Популярное</div>
+        <div class="tag">Новое</div>
+    </div>
+
+    <div class="middle-box">
+        <div class="player">
+            <div class="btn-box">
+                <a class="btn" id="sign" href="{{ url }}"><span class="btn-text">Смотреть</span></a>
+                <div class="price-line">
+                    <span class="price-fill">
+                        Доступ 30 руб./день со счета билайн</span>
+                </div>
+            </div>
+            <div class="player-share"></div>
+            <div class="player-bar">
+                <div class="player-bar_item i-1"></div>
+                <div class="player-bar_item i-2"></div>
+                <div class="player-bar_item i-3"></div>
+                <div class="player-bar_item i-4"></div>
+            </div>
+        </div>
+
+        <div class="banner"><img src="images/banner.jpg" alt="" /></div>
+
+        <div class="social cla">
+            <div class="likes cla">
+                <a class="like rateYes active down" data-rate="video:11169621:1">&nbsp;</a>
+                <div class="procents">94%</div>
+                <a class="dislike rateNo down" data-rate="video:11169621:0">&nbsp;</a>
+            </div>
+            <div class="other">
+                <div class="time" itemprop="duration" content="T15M9S">15:09</div>
+                <div class="views">18,088</div>
+            </div>
+        </div>
+
+        <div class="publish">Опубликовано <span>newsensations</span> 2 дня назад</div>
+
+        <div class="tags dc">
+            <div class="tag">Брюнетки</div>
+            <div class="tag">Новое</div>
+            <div class="tag">Топ</div>
+            <div class="tag">Видео</div>
+            <div class="tag">Блондинки</div>
+            <div class="tag">Популярное</div>
+            <div class="tag">Девушки</div>
+        </div>
+
+        <div class="related cla">
+            <img src="images/rel-1.jpg" alt="">
+            <img src="images/rel-2.jpg" alt="">
+        </div>
+    </div>
+
+    <div class="footer">
+        Нажимая кнопку, вы активируете подписку на услугу "ЭроЛайф". <br>
+        Стоимость подписки - 30&nbsp;руб./сут.  со счета билайн.<br>
+        Отключить подписку вы можете бесплатно в любой момент. <br>
+        <a href="http://mob.beeline.ru/subs/erolifex/regulations/">Пользовательское соглашение</a>
+    </div>
+</div>
+</body>
+</html>

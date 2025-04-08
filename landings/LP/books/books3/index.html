@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Книги</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header-top">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt=""/>
+            </div>
+        </div>
+    </header>
+    <div class="book-container">
+        <h1>
+            СЛУШАЙ ЛЮБЫЕ КНИГИ
+        </h1>
+        <div class="player">
+        </div>
+    </div>
+    <div class="btn-container">
+        <div class="title" v-show="!ageConfirm">
+            {{ message }}
+        </div>
+        <div class="title" v-show="ageConfirm">
+            {{ message2 }}
+        </div>
+        <button class="btn ripple-button" @click="toggleView" v-show="!ageConfirm">ПРОДОЛЖИТЬ</button>
+        <form id="finalize"
+              action="/route"
+              method="post"
+              v-show="ageConfirm"
+        >
+            <div class="form-group">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <input type="hidden" name="promoter_id" :value="promoterId">
+                <input type="hidden" name="result" value="subscribed">
+            </div>
+            <button class="btn" @click="" v-show="ageConfirm" >ПОДТВЕРДИТЬ</button>
+        </form>
+        <a href="#" class="reject" @click="window.history.back()">Нет, я передумал</a>
+        <div class="price">
+            Стоимость 20Р/сутки со счета билайн
+        </div>
+    </div>
+    <div class="footer">
+        Нажимая кнопку, вы подписываетесь на услугу "книги билайн".
+        Стоимость 20 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+        <a href="https://books.beeline.ru/rules/policy.html"></a>Пользовательское соглашение
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

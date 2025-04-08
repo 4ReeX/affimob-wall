@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Портал для взрослых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="header">
+            <div class="logo">Эротический портал</div>
+            <div class="search"></div>
+            <div class="menu"></div>
+        </div>
+        <div class="desc">Подборка видео для взрослых</div>
+        <div class="tags">
+            <div class="tag">Видео</div>
+            <div class="tag">Популярное</div>
+            <div class="tag">Новое</div>
+        </div>
+
+        <div class="middle-box">
+            <div class="player">
+                <div class="btn-box" v-show="!ageConfirm">
+                    <button class="btn" @click="toggleView" v-show="!ageConfirm">
+                        <span class="btn-text1">Подтвердить <br/>совершеннолетие</span>
+                    </button>
+                    <div class="price-line">
+                        <span class="price-fill" v-show="!ageConfirm">Смотрите видео в HD качестве</span>
+                    </div>
+                </div>
+                    <form id="finalize"
+                          action="/route"
+                          method="post"
+                          v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+                        <div class="form-group">
+                            <input type="hidden" name="_token" :value="csrfToken">
+                            <input type="hidden" name="promoter_id" :value="promoterId">
+                            <input type="hidden" name="result" value="subscribed">
+                        </div>
+                        <button class="btn" @click="" v-show="ageConfirm">
+                            <span class="btn-text">Смотреть</span>
+                        </button>
+                        <div class="price-line">
+                            <span class="price-fill" v-show="ageConfirm">Стоимость 20Р/сутки со счета билайн</span>
+                        </div>
+                    </form>
+                <div class="player-share"></div>
+                <div class="player-bar">
+                    <div class="player-bar_item i-1"></div>
+                    <div class="player-bar_item i-2"></div>
+                    <div class="player-bar_item i-3"></div>
+                    <div class="player-bar_item i-4"></div>
+                </div>
+            </div>
+
+            <div class="banner"><img src="assets/images/banner.jpg" alt=""/></div>
+
+            <div class="social cla">
+                <div class="likes cla">
+                    <a class="like rateYes active down" data-rate="video:11169621:1">&nbsp;</a>
+                    <div class="procents">94%</div>
+                    <a class="dislike rateNo down" data-rate="video:11169621:0">&nbsp;</a>
+                </div>
+                <div class="other">
+                    <div class="time" itemprop="duration" content="T15M9S">15:09</div>
+                    <div class="views">18,088</div>
+                </div>
+            </div>
+
+            <div class="publish">Опубликовано <span>newsensations</span> 2 дня назад</div>
+
+            <div class="tags dc">
+                <div class="tag">Брюнетки</div>
+                <div class="tag">Новое</div>
+                <div class="tag">Топ</div>
+                <div class="tag">Видео</div>
+                <div class="tag">Блондинки</div>
+                <div class="tag">Популярное</div>
+                <div class="tag">Девушки</div>
+            </div>
+
+            <div class="related cla">
+                <img src="assets/images/rel-1.jpg" alt="">
+                <img src="assets/images/rel-2.jpg" alt="">
+            </div>
+        </div>
+        <div class="footer">
+            Нажимая кнопку, вы подписываетесь на услугу "Эропортал".
+            Стоимость 30 руб./сут. Отключить подписку вы сможете бесплатно в любой момент.
+            <a href="http://landing.beeline.ru/promoter/pages/eroportaladultxru/user_agreement.html">Пользовательское
+                соглашение</a>
+        </div>
+</div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

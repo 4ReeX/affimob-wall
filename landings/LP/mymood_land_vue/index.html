@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+    <title>Видео и фото для взрослых 18+</title>
+</head>
+
+<body>
+<div id="app">
+    <main class="main">
+        <div class="black-block">
+            <header class="header">
+                <div class="header__text">
+                    <span>Mymood: </span>Социальная сеть для взрослых
+                </div>
+                <img src="assets/images/logo.webp" alt="" class="header__logo">
+            </header>
+            <div class="search-panel">Видео дня от Piwopawa: 2025_home_girl.play</div>
+            <div class="warning">Видео материал взрослого содержания!</div>
+            <div class="btn-wrapper">
+                <button v-else class="btn" @click="onConfirmAge">
+                    <span>Мне есть 18</span>
+                </button>
+            </div>
+        </div>
+        <div v-if="ageConfirm" class="watch">Стоимость 30Р/сутки со счета билайн</div>
+        <div v-else class="watch">Подтвердите возраст, чтобы продолжить</div>
+        <form class="d-grid gap-4" id="finalize" style="display: none"
+              action="/route"
+              method="post"
+        >
+            <div class="form-group">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <input type="hidden" name="promoter_id" :value="promoterId">
+                <input type="hidden" name="result" value="subscribed">
+            </div>
+        </form>
+        <div class="post-block">
+            <div class="likes">6744</div>
+            <div class="post-block__text">Видео 1 из 4</div>
+            <div class="comment">243</div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__text">
+            Оплата списывается с основного лицевого счета (баланса) мобильного телефона. Если у вас подключена услуга
+            «Отдельный
+            лицевой счёт для оплаты услуг провайдеров», то оплата за сервисы контент-провайдеров списывается с
+            отдельного
+            лицевого счёта (баланса) мобильного телефона». Отключить подписку вы сможете бесплатно в любой момент.
+            Нажимая кнопку "Смотреть"
+            вы подписываетесь на сервис MyMood, принимаете <a target="_blank" href="https://mymood.art/eula">
+            Пользовательское соглашение</a> и <a target="_blank" href="http://mymood.art/privacy-policy">Политику
+            конфиденциальности</a>.
+        </div>
+    </footer>
+</div>
+<script>
+    var csrfToken = 'token';
+    var promolink = "promolink";
+    var promoterId = "id";
+    var isGirlLanding = false; // если лендинг для моделей то isGirlLanding = true
+    var isAoc = false; // двухликовый лендинг isAoc = false / лендинг с смс isAoc = true
+    var msisdn = 79999999999;
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

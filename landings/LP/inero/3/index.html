@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Портал для взрослых</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+	<meta http-equiv="X-UA-Compatible" content="IE=7">
+	<meta name="author" content="marazmen">
+	<link rel="stylesheet" href="styles/app.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body class="">
+<div id="app">
+	<header class="header">
+		<div class="header__container container">
+				<button class="header__burger">
+					<img src="assets/images/menu.svg" alt="">
+				</button>
+
+				<div class="logo">
+					<img src="assets/images/logo.svg" alt="">
+				</div>
+			<div class="header__right">
+				<div class="age">18+</div>
+			</div>
+		</div>
+		<div class="header__container container">
+			<form class="header__search">
+				<input type="text" placeholder="Найти видео">
+				<div class="search-btn">
+					<img src="assets/images/search.svg" alt="" >
+				</div>
+
+			</form>
+		</div>
+	</header>
+	<main class="main">
+		<section class="player">
+			<div class="player__container container">
+				<div class="player__window">
+					<div class="player__head">
+						<span class="player__quality">1080p</span>
+						<span class="player__time">09:23</span>
+					</div>
+					<div class="player__panel panel">
+						<div class="panel__containerLine">
+							<!--						<div class="panel__line"></div>-->
+						</div>
+						<div class="panel__containerManagement">
+							<button class="panel__play">
+								<img src="assets/images/play.svg" alt="">
+							</button>
+							<button class="panel__sound">
+								<img src="assets/images/sound.png" alt="">
+							</button>
+							<div class="panel__time">
+								0:00 / 9:23
+							</div>
+							<div class="panel__control">
+								<button class="panel__setting">
+									<img src="assets/images/set.png" alt="">
+								</button>
+								<button class="panel__wid">
+									<img src="assets/images/wid.png" alt="">
+								</button>
+							</div>
+						</div>
+					</div>
+					<div class="btn-box" v-show="!ageConfirm">
+						<button class="btn" @click="toggleView" v-show="!ageConfirm">
+							<span class="btn-text1">мне есть 18</span>
+						</button>
+						<div class="price">
+							<span class="price-bg">Cмотри в HD качестве вместе с билайн</span>
+						</div>
+					</div>
+					<form id="finalize"
+						  action="/route"
+						  method="post"
+						  v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+						<div class="form-group">
+							<input type="hidden" name="_token" :value="csrfToken">
+							<input type="hidden" name="promoter_id" :value="promoterId">
+							<input type="hidden" name="result" value="subscribed">
+						</div>
+						<button class="btn" @click="" v-show="ageConfirm">
+							<span class="btn-text">Смотреть</span>
+							<span class="btn-icon">
+								<img src="assets/images/play.svg" alt="">
+							</span>
+						</button>
+						<div class="price">
+							<span class="price-bg">Стоимость 30Р/сутки со счета билайн</span>
+						</div>
+					</form>
+					<div class="player__loader">
+						<span class="loaderItem"></span>
+					</div>
+
+				</div>
+			</div>
+		</section>
+	</main>
+	<footer class="footer footer__default" v-show="!ageConfirm">
+		<div class="container footer__container">
+			<p class="footer__text">
+				Доступ к сервису от 18 лет, нажатием на кнопку ”подтверждаю” вы подтверждаете свое совершеннолетие
+			</p>
+		</div>
+	</footer>
+	<footer class="footer footer__agree" v-show="ageConfirm">
+		<div class="container footer__container">
+			<p class="footer__text">
+				Нажимая кнопку, вы подписываетесь на услугу «ИнЭро». Стоимость 30 руб./сут.
+				Отключить подписку вы сможете бесплатно в любой момент.
+				<a href="http://landing.beeline.ru/promoter/pages/ineroadultxru/user_agreement.html">Пользовательское
+					соглашение</a>
+			</p>
+		</div>
+	</footer>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

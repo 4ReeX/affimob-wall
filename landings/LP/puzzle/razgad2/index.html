@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>«Разгадайка»</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <header>
+        <div class="header-top" v-if="ageConfirm">
+            <div class="ui-block star">
+                <div class="icon"><img src="assets/images/star.png" alt=""></div>
+                <div class="text">1600</div>
+            </div>
+            <div class="service-name">
+                Разгадайка
+            </div>
+            <div class="ui-block diamond">
+                <div class="icon "><img src="assets/images/diamond.svg" alt=""></div>
+                <div class="text">1800</div>
+            </div>
+        </div>
+        <div class="underline"></div>
+    </header>
+    <div class="age-block" v-show="!ageConfirm">
+       <div class="popup">
+           <div class="owl-img">
+               <img src="assets/images/owl1.png" alt=""/>
+           </div>
+           <div class="popup-text">
+               <div class="popup-title">
+                   Приходи играть <br/>каждый день
+                   <br/> <span> и забирай <span style="color: #E89083;">крутые призы</span></span>
+               </div>
+                <div class="popup-small-text">
+                    Тысячи реальных призов от билайна и партнёров в розыгрыше каждый месяц! <br><br>
+                </div>
+               <button class="btn" @click="toggleView" v-show="!ageConfirm">
+                   <span class="bg ripple-button"></span>
+                   <span class="btn-text">ПОНЯЛ</span>
+               </button>
+               <div class="price">
+                   Цена - 30 руб. в день со счета билайн
+               </div>
+           </div>
+       </div>
+
+    </div>
+    <div class="image-block" v-show="ageConfirm">
+        <img src="assets/images/owl2.png" alt=""/>
+    </div>
+    <div class="btn-container" v-show="ageConfirm">
+        <form id="finalize"
+              action="/route"
+              method="post"
+              v-show="ageConfirm"
+        >
+            <div class="form-group">
+                <input type="hidden" name="_token" :value="csrfToken">
+                <input type="hidden" name="promoter_id" :value="promoterId">
+                <input type="hidden" name="result" value="subscribed">
+            </div>
+            <button class="btn black ripple-button" @click="" v-show="ageConfirm">
+                <span class="bg ripple-button"></span>
+                <span class="btn-text">ИГРАТЬ</span>
+            </button>
+        </form>
+
+        <a href="#" class="reject" v-show="!ageConfirm" @click="window.history.back()">Нет, не готов</a>
+        <a href="#" class="reject" v-show="ageConfirm" @click="window.history.back()">Вернуться назад</a>
+        <div class="price">
+            Цена - 30 руб. в день со счета билайн
+        </div>
+    </div>
+    <div class="footer">
+        ПАО “ВымпелКом" <br/>
+        <a href="https://razgadayka.beeline.ru/agreement">Пользовательское соглашение</a>
+        <a href="https://razgadayka.beeline.ru/policy">Политика обработки данных</a>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

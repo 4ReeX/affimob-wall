@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Портал для взрослых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="header">
+            <div class="menu"></div>
+            <div class="logo">
+                <img src="assets/images/logo.svg" alt="">
+            </div>
+            <div class="user">18+</div>
+        </div>
+        <div class="tags">
+            <div class="tag b">Главная</div>
+            <div class="tag r">Тетрис</div>
+            <div class="tag">ЭроЧат</div>
+        </div>
+
+        <div class="middle-box">
+            <div class="player">
+                <div class="btn-box" v-show="!ageConfirm">
+                    <button class="btn" @click="toggleView" v-show="!ageConfirm">
+                        <span class="btn-text1">мне есть 18</span>
+                    </button>
+                    <div class="price">
+                        <span class="price-bg">Cмотри в HD качестве вместе с билайн</span>
+                    </div>
+                </div>
+                <form id="finalize"
+                      action="/route"
+                      method="post"
+                      v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" :value="csrfToken">
+                        <input type="hidden" name="promoter_id" :value="promoterId">
+                        <input type="hidden" name="result" value="subscribed">
+                    </div>
+                    <button class="btn" @click="" v-show="ageConfirm">
+                        <span class="btn-text">Смотреть</span>
+                    </button>
+                    <div class="price">
+                        <span class="price-bg">Стоимость 30Р/сутки со счета билайн</span>
+                    </div>
+                </form>
+                <div class="player-bar"></div>
+            </div>
+
+            <div class="meta"><img src="assets/images/meta.jpeg" alt=""></div>
+            <div class="meta"><img src="assets/images/img.png" alt=""></div>
+
+            <div class="related cla">
+                <img src="assets/images/rel-1.jpg" alt="">
+                <img src="assets/images/rel-2.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="footer">
+            Нажимая кнопку, вы подписываетесь на услугу «ИнЭро». Стоимость 30 руб./сут.
+            Отключить подписку вы сможете бесплатно в любой момент.
+            <a href="http://landing.beeline.ru/promoter/pages/ineroadultxru/user_agreement.html">Пользовательское
+                соглашение</a>
+        </div>
+    </div>
+</div>
+<script src="js/main.js"></script>
+</body>
+</html>

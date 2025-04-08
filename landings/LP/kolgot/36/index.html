@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mymood - портал для взрослых</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="wrapper">
+        <div class="header">
+            <div class="menu"></div>
+            <div class="logo">Mymood - Соцсеть для взрослых.</div>
+            <div class="user">18+</div>
+        </div>
+        <div class="tags">
+            <div class="tag b">Модели</div>
+            <div class="tag r">Популярное</div>
+            <div class="tag">Сегодня</div>
+            <div class="tag">Топ</div>
+        </div>
+
+        <div class="middle-box">
+            <div class="player">
+                <div class="btn-box" v-show="!ageConfirm">
+                    <button class="btn" @click="toggleView" v-show="!ageConfirm">
+                        <span class="btn-text1">МНЕ ЕСТЬ 18 ЛЕТ</span>
+                    </button>
+                    <div class="price">
+                        <span class="price-bg">Стоимость — 30 &#8381; в сутки со счета билайн</span>
+                    </div>
+                </div>
+                <form id="finalize"
+                      action="/route"
+                      method="post"
+                      v-show="ageConfirm" class="btn-box" v-show="ageConfirm">
+                    <div class="form-group">
+                        <input type="hidden" name="_token" :value="csrfToken">
+                        <input type="hidden" name="promoter_id" :value="promoterId">
+                        <input type="hidden" name="result" value="subscribed">
+                    </div>
+                    <button class="btn" @click="" v-show="ageConfirm">
+                        <span class="btn-text">Смотреть</span>
+                        <span class="icon">
+                                <div class="play-button">
+                                    <div class="triangle"></div>
+                                </div>
+                            </span>
+                    </button>
+                    <div class="price">
+                        <span class="price-bg">Стоимость — 30 &#8381; в сутки со счета билайн</span>
+                    </div>
+                </form>
+                <div class="player-bar"></div>
+            </div>
+
+            <div class="meta"><img src="assets/images/meta.jpg" alt=""></div>
+            <div class="meta banner"></div>
+
+            <div class="related cla">
+                <div class="img-box" style="background-image: url('assets/images/87c598de0610fa20faa5188bba4573a99ecbf3d8.webp')"></div>
+                <div class="img-box" style="background-image: url('assets/images/ff0c8a072a9928b9f9830b5920d1a260612005c9.webp')"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Оплата списывается с основного лицевого счета (баланса) мобильного телефона.
+            Если у вас подключена услуга «Отдельный лицевой счёт для оплаты услуг провайдеров»,
+            то оплата за сервисы контент-провайдеров списывается с отдельного лицевого счёта (баланса) мобильного телефона».
+            Отключить подписку вы сможете бесплатно в любой момент. Нажимая
+            кнопку Смотреть вы подписываетесь на сервис MyMood, принимаете <a class="main_page_link"
+                                                                              href="https://mymood.art/eula">Пользовательское
+            соглашение</a>
+            и <a class="main_page_link" href="http://mymood.fun/privacy-policy">Политику конфиденциальности</a>
+        </div>
+    </div>
+</div>
+<script>
+    var csrfToken = 'token';
+    var promolink = "promolink";
+    var promoterId = "id";
+    var isGirlLanding = false;
+    var isAoc = false;
+    var msisdn = 79999999999;
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

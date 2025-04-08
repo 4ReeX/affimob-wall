@@ -1,0 +1,411 @@
+:root {
+    --background-color: #F8F8F8;
+    --background-second: #F8F8F8;
+    --text-color: #000000;
+    --subtext-color: #000000;
+    --btn-bg-color: #000000;
+    --btn-bg-solid: #ace06d;
+    --btn-text-color: #FFE632;
+}
+html, body, #app {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('../assets/fonts/Manrope-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+}
+
+
+div#app {
+    width: 100%;
+}
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+    background: var(--background-second);
+    box-sizing: border-box;
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.btn-confirm {
+    width: 100%;
+    background-color: #ec1367;
+    border: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 10px;
+}
+.reject {
+    color: rgb(0, 0, 0);
+    font-family: Manrope, sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 22px;
+    letter-spacing: 0;
+    text-align: center;
+    text-decoration-line: underline;
+}* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+ }
+body {
+    background: #2b2b2b;
+    font-size: 10px;
+    line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Open Sans", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body, a {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+}
+a {
+    text-decoration: underline;
+}
+
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.header {
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 30px;
+    background: #000;
+    position: relative;
+}
+.header .logo {
+    background: url('../assets/images/logo.png') left center no-repeat;
+    background-size: 30px auto;
+    padding-left: 36px;
+    font-size: 17px;
+    line-height: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.header .logo span {
+    color: #9f362c;
+}
+.logo-desc {
+    font-size: 10px;
+    line-height: 12px;
+    font-weight: normal;
+    text-transform: none;
+}
+.header .age {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding-right: 72px;
+    background: url('../assets/images/header-icons.png') right center no-repeat;
+}
+.search {
+    margin-top: 10px;
+    padding-right: 90px;
+    background: url('../assets/images/dn.png') right center no-repeat;
+}
+.search-input {
+    background: #141414;
+    border-radius: 3px;
+    padding-left: 8px;
+    color: #e0dfdc;
+    font-size: 14px;
+    line-height: 36px;
+    position: relative;
+}
+.search-input:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 8px;
+    bottom: 0;
+    width: 19px;
+    background: url('../assets/images/search.png') center center no-repeat;
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1px;
+}
+.nav-item {
+    padding: 0 10px;
+    color: #e0dfdc;
+    font-size: 13px;
+    line-height: 36px;
+    text-align: center;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.125);
+}
+.nav-item:nth-child(2) {
+    width: 100%;
+    padding: 0;
+    margin: 0 1px;
+}
+
+.middle-box {}
+.player {
+    background: #141412;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.125);
+    margin: 0 auto;
+    position: relative;
+}
+.player-screen {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.player-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+.player-bar img {
+    display: block;
+    max-width: 100%;
+    height: 50px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.btn-box {
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.btn-submit {
+    display: inline-block;
+    max-width: 400px;
+    width: 80%;
+    border: none;
+    border-radius: 8px;
+    background: rgba(159, 54, 44, 0.8);
+    color: #fff;
+    font-size: 32px;
+    line-height: normal;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+    height: 180px;
+}
+.btn-submit .btn-text {
+    display: flex;
+    background: url('../assets/images/btn-play.png') right center no-repeat;
+    background-size: 54px 54px;
+    padding-right: 75px;
+    height: 60px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-position-x: calc(100% - 30px);
+}
+.price-line {
+    display: block;
+    color: #777;
+    font-size: 17px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+.price-fill {
+    display: inline-block;
+}
+
+.info {
+    background: #141414;
+    padding: 20px 8px 5px;
+}
+.info:after {
+    content: '';
+    clear: both;
+    display: table;
+}
+.info-vote {
+    float: left;
+    margin-top: 5px;
+}
+.info-rating {
+    float: right;
+}
+.info-text {
+    padding: 8px;
+    background: #2b2b2b;
+    color: #a8a8a8;
+    font-size: 13px;
+    line-height: 1.4;
+}
+.info-text span {
+    color: #818181;
+}
+
+.related {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 4px;
+}
+.related-item {
+    padding: 0 4px;
+}
+.related-item img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #2b2b2b;
+    color: #666;
+    font-size: 10px;
+    line-height: 1;
+    text-align: center;
+}
+.footer a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+@media (max-width: 360px) {
+    .info-vote {
+        width: 170px;
+    }
+    .info-rating {
+        width: 120px;
+    }
+}
+
+@media (orientation: portrait) and (max-height: 459px) {
+    .player-screen {
+        height: 130px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 450px) {
+    .search,
+    .nav,
+    .info,
+    .related {
+        display: none;
+    }
+    .player-screen {
+        height: 110px;
+    }
+    .btn-submit {
+        max-width: 320px;
+        line-height: 80px;
+    }
+    .btn-submit .btn-text {
+        background-size: 50px auto;
+    }
+}
+@media (orientation: landscape) and (max-height: 320px) {
+    .player-screen {
+        height: 80px;
+    }
+    .btn-submit {
+        line-height: 60px;
+    }
+    .btn-submit .btn-text {
+        background-size: 30px auto;
+    }
+}
+@media (orientation: landscape) and (min-width: 900px) and (min-height: 451px) {
+    .wrapper {
+        left: 50%;
+        right: auto;
+        width: 800px;
+        margin-left: -400px;
+    }
+    .player {
+        height: 400px;
+    }
+    .btn-submit {
+        max-width: 500px;
+    }
+}

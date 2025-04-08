@@ -1,0 +1,30 @@
+<svg width="32.000000" height="30.000000" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<clipPath id="clip68_26383">
+			<rect id="Icon_heart" rx="0.000000" width="31.000000" height="29.000000" transform="translate(0.500000 0.500000)" fill="white" fill-opacity="0"/>
+		</clipPath>
+		<radialGradient gradientTransform="translate(10.7732 5.96051) rotate(0) scale(24.5227 22.6873)" cx="0.000000" cy="0.000000" r="1.000000" id="paint_radial_68_26380_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FF8456"/>
+			<stop offset="0.310000" stop-color="#FF5433"/>
+			<stop offset="0.730000" stop-color="#FF403F"/>
+			<stop offset="0.930000" stop-color="#FF9933"/>
+		</radialGradient>
+		<radialGradient gradientTransform="translate(4.88425 3.18748) rotate(0) scale(7.52297 6.95991)" cx="0.000000" cy="0.000000" r="1.000000" id="paint_radial_68_26381_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFBB92"/>
+			<stop offset="1.000000" stop-color="#FBA4B2" stop-opacity="0.000000"/>
+		</radialGradient>
+		<radialGradient gradientTransform="translate(20.679 1.59866) rotate(0) scale(5.12183 4.73848)" cx="0.000000" cy="0.000000" r="1.000000" id="paint_radial_68_26382_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#FFAD91"/>
+			<stop offset="1.000000" stop-color="#FBA4B2" stop-opacity="0.000000"/>
+		</radialGradient>
+	</defs>
+	<rect id="Icon_heart" rx="0.000000" width="31.000000" height="29.000000" transform="translate(0.500000 0.500000)" fill="#FFFFFF" fill-opacity="0"/>
+	<g clip-path="url(#clip68_26383)">
+		<path id="Vector" d="M28.07 1.38C27.02 0.67 25.85 0.23 24.62 0.07C23.4 -0.08 22.16 0.06 20.99 0.49C18.85 1.37 17.07 3.05 15.97 5.23C14.93 3.04 13.17 1.36 11.04 0.49C9.87 0.05 8.62 -0.09 7.39 0.06C6.16 0.22 4.97 0.66 3.92 1.38C2.68 2.24 1.67 3.44 0.99 4.84C0.3 6.25 -0.04 7.83 0 9.42C0.18 13.7 2.2 17.86 6.07 21.9C8.74 24.67 11.36 27.13 13.92 29.3C14.59 29.75 15.37 29.99 16.15 30C16.85 29.96 17.53 29.72 18.12 29.3C20.64 27.13 23.25 24.67 25.92 21.9C29.79 17.86 31.81 13.7 32 9.42C32.03 7.83 31.69 6.25 31 4.84C30.32 3.44 29.31 2.24 28.07 1.38Z" fill="url(#paint_radial_68_26380_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="Vector" d="M20.99 0.44C18.85 1.35 17.08 3.05 15.97 5.23C14.92 3.04 13.17 1.34 11.04 0.44C9.86 0.03 8.61 -0.1 7.38 0.07C6.15 0.24 4.97 0.7 3.92 1.43C2.69 2.27 1.68 3.45 1 4.84C0.31 6.23 -0.04 7.79 -0.01 9.37C0.18 13.69 2.2 17.85 6.07 21.85C8.74 24.62 11.36 27.1 13.92 29.3C14.54 29.76 15.27 30 16.02 30C16.77 30 17.5 29.76 18.12 29.3C20.64 27.1 23.25 24.62 25.92 21.85C29.79 17.85 31.81 13.69 31.99 9.37C32.04 7.91 31.75 6.46 31.17 5.15C30.59 3.84 29.72 2.69 28.64 1.82C27.56 0.94 26.3 0.36 24.97 0.12C23.64 -0.12 22.28 -0.01 20.99 0.44Z" fill="url(#paint_radial_68_26381_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+		<path id="Vector" d="M20.99 0.49C18.85 1.37 17.07 3.05 15.97 5.23C14.93 3.04 13.17 1.36 11.04 0.49C9.87 0.05 8.62 -0.09 7.39 0.06C6.16 0.22 4.97 0.66 3.92 1.38C2.68 2.24 1.67 3.44 0.99 4.84C0.3 6.25 -0.04 7.83 0 9.42C0.18 13.7 2.2 17.86 6.07 21.9C8.74 24.67 11.36 27.13 13.92 29.3C14.54 29.76 15.27 30 16.02 30C16.77 30 17.5 29.76 18.12 29.3C20.64 27.13 23.25 24.67 25.92 21.9C29.79 17.86 31.81 13.7 32 9.42C32.03 7.83 31.69 6.25 31 4.84C30.32 3.44 29.31 2.24 28.07 1.38C27.02 0.67 25.85 0.23 24.62 0.07C23.4 -0.08 22.16 0.06 20.99 0.49Z" fill="url(#paint_radial_68_26382_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+	</g>
+</svg>
