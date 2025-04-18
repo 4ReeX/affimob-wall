@@ -1,0 +1,21 @@
+{
+  "name": "mymood_screenshots",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no landings/Билайн/test specified\" && exit 1",
+    "generate": "node generate-structure.js",
+    "watch": "chokidar 'landings/**/*' -c 'npm run generate'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "chokidar": "^4.0.3",
+    "fs-extra": "^11.3.0",
+    "path": "^0.12.7",
+    "puppeteer": "^23.11.1"
+  }
+}

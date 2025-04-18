@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MyMood</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=none">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="author" content="marazmen">
+    <link rel="stylesheet" href="styles/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/v-mask/dist/v-mask.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <div class="row sb">
+            <div class="block">
+
+                <img src="assets/images/logo.png" alt="">
+            </div>
+            <div class="age">18+</div>
+        </div>
+        <div class="slogan">
+            Соцсеть для взрослых.
+        </div>
+    </div>
+    <div class="center">
+        <div class="menu">
+            <div class="item"></div>
+        </div>
+        <div class="">
+            <template v-show="subscribeViewVisibility">
+                <div v-if="isAoc && isGirlLanding == false" class="player">
+                    <div v-if="passwordViewVisibility == false" class="btn-block">
+                        <button type="button" class="btn" @click="sendOTP">
+                            <div class="text">СМОТРЕТЬ</div>
+                            <span class="icon">
+                                <div class="play-button">
+                                    <div class="triangle"></div>
+                                </div>
+                            </span>
+                        </button>
+                        <div class="error-container text-start" v-text="accessSectionError"></div>
+                        <p class="price">Стоимость — 30 ₽ в сутки со счета билайн</p>
+                    </div>
+                    <div v-else class="player">
+                        <div class="form">
+                            <div class="title">Пожалуйста пройдите авторизацию для получения доступа</div>
+                            <label for="sms">введите полученный код</label>
+                            <div class="about-text mb-2" v-else>новый код отправлен</div>
+                            <input key="password" type="text" name="otp" class="input"
+                                   v-model="otpCode"
+                                   inputmode="numeric"
+                                   autocomplete="one-time-code"
+                                   autofocus
+                                   id="sms"
+                                   ref="sms"
+                                   :class="['custom-input', {'custom-input-error': errorCode}]"
+                                   placeholder="SMS-код" minlength="4" maxlength="4"
+                                   required="">
+                            <button type="button" class="send-link send-code" @click="resendOTPCode">
+                                <span v-if="!resendOTP">Код не пришел</span>
+                                <span v-else>Отправить повторно</span>
+                            </button>
+                            <div class="error-container text-start" v-if="errorCode" v-text="accessSectionError"></div>
+                            <button type="button" class="btn-confirm" :class="{'disabled': !submitBtnEnabled }"
+                                    @click="submitPassword">
+                                <div class="text">ОК</div>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+                <div v-else-if="isAoc == false && isGirlLanding == false">
+                    <div v-if="ageConfirm" class="player">
+                        <button type="button" class="btn" :class="{'disabled': !submitBtnEnabled }" @click="finalize">
+                            <div class="text">СМОТРЕТЬ</div>
+                            <span class="icon">
+                                <div class="play-button">
+                                    <div class="triangle"></div>
+                                </div>
+                            </span>
+                        </button>
+                        <p class="price">Стоимость — 30 ₽ в сутки со счета билайн</p>
+                    </div>
+                    <div v-else class="player">
+                        <button type="button" class="btn" :class="{'disabled': !submitBtnEnabled }"
+                                @click="onConfirmAge">
+                            <div class="text">МНЕ ЕСТЬ 18 ЛЕТ</div>
+                        </button>
+                        <p class="price">Стоимость — 30 ₽ в сутки со счета билайн</p>
+                    </div>
+                </div>
+                <div v-else-if="isGirlLanding" class="player">
+                    <button type="button" class="btn" :class="{'disabled': !submitBtnEnabled }" @click="modelSubscribe">
+                        <div class="text">Кнопка модели</div>
+                    </button>
+                    <p class="price">Стоимость — 30₽/сут. со счета билайн</p>
+                </div>
+                <form class="d-grid gap-4" id="finalize" style="display: none"
+                      action="/route"
+                      method="post"
+                >
+                    <div class="form-group">
+                        <input type="hidden" name="_token" :value="csrfToken">
+                        <input type="hidden" name="promoter_id" :value="promoterId">
+                        <input type="hidden" name="result" value="subscribed">
+                    </div>
+                </form>
+            </template>
+            <template v-if="paymentViewVisibility">
+                <iframe src="" class="payment-iframe"></iframe>
+            </template>
+        </div>
+        <div class="rating">
+            <div class="row flex-start">
+                <div class="share">
+                    <img src="assets/images/l.png" alt="like">
+                </div>
+                <div class="share">
+                    <div class="text">1242</div>
+                </div>
+            </div>
+            <div class="row flex-end">
+                <div class="share">
+                    <img src="assets/images/share.png" alt="share"/>
+                </div>
+                <div class="share">
+                    <img src="assets/images/chat.png" alt="chat"/>
+                </div>
+            </div>
+
+        </div>
+        <div class="row dop-content">
+            <div class="col">
+                <div class="media p2">
+                    <img src="assets/images/5.jpg" alt="">
+                    <div class="views">
+                        <div class="amount"><img src="assets/images/v.png" alt=""/><span>1241</span></div>
+                    </div>
+                    <div class="likes">
+                        <div class="amount"><img src="assets/images/l.png" alt=""/><span>97%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="media p3">
+                    <img src="assets/images/1.jpg" alt="">
+                    <div class="views">
+                        <div class="amount"><img src="assets/images/v.png" alt=""/><span>7453</span></div>
+                    </div>
+                    <div class="likes">
+                        <div class="amount"><img src="assets/images/l.png" alt=""/><span>96%</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        Оплата списывается с основного лицевого счета (баланса) мобильного телефона.
+        Если у вас подключена услуга «Отдельный лицевой счёт для оплаты услуг провайдеров»,
+        то оплата за сервисы контент-провайдеров списывается с отдельного лицевого счёта (баланса) мобильного телефона».
+        Отключить подписку вы сможете бесплатно в любой момент. Нажимая
+        кнопку Смотреть вы подписываетесь на сервис MyMood, принимаете <a class="main_page_link"
+                                                                          href="https://mymood.art/eula">Пользовательское
+        соглашение</a>
+        и <a class="main_page_link" href="http://mymood.fun/privacy-policy">Политику конфиденциальности</a>
+    </div>
+</div>
+
+<script>
+    var csrfToken = 'token';
+    var promolink = "promolink";
+    var promoterId = "id";
+    var isGirlLanding = false;
+    var isAoc = false;
+    var msisdn = 79999999999;
+</script>
+<script src="js/main.js"></script>
+</body>
+</html>

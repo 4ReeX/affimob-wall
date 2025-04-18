@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>AffiMob Wall - Landing Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Управление лендингами AffiMob Wall</h1>
+<div class="loader" id="loading">Загрузка операторов...</div>
+<ul id="operatorsList" class="operators-list"></ul>
+<div class="preview-container" id="previewContainer">
+    <div class="close-preview">×</div>
+    <iframe class="preview-iframe" id="previewFrame"></iframe>
+</div>
+
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+    class LandingManager {
+        constructor() {
+            this.operators = [];
+            this.init();
+        }
+
+        async init() {
+            await this.loadOperators();
+            this.addEventListeners();
+        }
+
+        async loadOperators() {
+            try {
+                const response = await fetch('landings-structure.json');
+                const data = await response.json();
+                this.operators = data.children;
+                this.renderOperators();
+                document.getElementById('loading').style.display = 'none';
+            } catch (error) {
+                console.error('Ошибка загрузки операторов:', error);
+                document.getElementById('loading').textContent =
+                    'Ошибка загрузки списка операторов';
+            }
+        }
+
+        renderOperators() {
+            const list = document.getElementById('operatorsList');
+            this.operators.forEach(operator => {
+                const li = document.createElement('li');
+                li.className = 'operator-item';
+                li.innerHTML = `
+                        <div class="operator-name">${operator.name}</div>
+                        <div class="subfolders-container"></div>
+                    `;
+                list.appendChild(li);
+            });
+        }
+
+        async loadSubfolders(operatorName, container) {
+            try {
+                const operator = this.operators.find(op => op.name === operatorName);
+                if (!operator.children) {
+                    const response = await fetch(`landings/${operatorName}/structure.json`);
+                    operator.children = await response.json();
+                }
+                this.renderSubfolders(operator.children, container);
+            } catch (error) {
+                console.error('Ошибка загрузки подпапок:', error);
+            }
+        }
+
+        renderSubfolders(subfolders, container) {
+            container.innerHTML = '';
+            subfolders.forEach(subfolder => {
+                const div = document.createElement('div');
+                div.className = 'subfolder';
+                div.innerHTML = `
+                        <div class="subfolder-name">${subfolder.name}</div>
+                        <div class="landings-container"></div>
+                    `;
+                container.appendChild(div);
+
+                if (subfolder.children) {
+                    this.renderLandings(subfolder.children, div.querySelector('.landings-container'));
+                }
+            });
+        }
+
+        renderLandings(landings, container) {
+            landings.forEach(landing => {
+                const div = document.createElement('div');
+                div.className = 'landing-item';
+                div.innerHTML = `
+                        <a href="landings/${landing.path}/index.html"
+                           class="landing-link"
+                           data-path="${landing.path}">
+                            ${landing.name}
+                        </a>
+                        <div class="actions">
+                            <button class="screenshot-btn" data-path="${landing.path}">📸</button>
+                            <button class="zip-btn" data-path="${landing.path}">🗜</button>
+                        </div>
+                    `;
+                container.appendChild(div);
+            });
+        }
+
+        addEventListeners() {
+            document.addEventListener('click', async (e) => {
+                // Клик по оператору
+                if (e.target.closest('.operator-item')) {
+                    const operatorItem = e.target.closest('.operator-item');
+                    const container = operatorItem.querySelector('.subfolders-container');
+                    const operatorName = operatorItem.querySelector('.operator-name').textContent;
+
+                    container.style.display = container.style.display === 'block' ? 'none' : 'block';
+                    if (container.style.display === 'block' && !container.innerHTML) {
+                        await this.loadSubfolders(operatorName, container);
+                    }
+                }
+
+                // Остальные обработчики...
+                if (e.target.closest('.landing-link')) {
+                    e.preventDefault();
+                    const path = e.target.dataset.path;
+                    this.showPreview(`landings/${path}/index.html`);
+                }
+
+                if (e.target.closest('.screenshot-btn')) {
+                    const path = e.target.dataset.path;
+                    this.takeScreenshot(`landings/${path}/index.html`);
+                }
+
+                if (e.target.closest('.zip-btn')) {
+                    const path = e.target.dataset.path;
+                    this.createZip(`landings/${path}`);
+                }
+
+                if (e.target.closest('.close-preview')) {
+                    this.hidePreview();
+                }
+            });
+        }
+
+        // Остальные методы (showPreview, hidePreview, takeScreenshot, createZip)
+        // остаются без изменений как в предыдущем ответе
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        new LandingManager();
+    });
+</script>
+</body>
+</html>

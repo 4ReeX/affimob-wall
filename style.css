@@ -1,0 +1,124 @@
+:root {
+    --primary-color: #2c3e50;
+    --hover-color: #3498db;
+    --bg-color: #f5f6fa;
+    --item-bg: #ffffff;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    background: var(--bg-color);
+}
+
+.loader {
+    padding: 20px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.operators-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.operator-item {
+    background: var(--item-bg);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.operator-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.subfolders-container {
+    display: none;
+    margin-top: 15px;
+    padding-left: 25px;
+    border-left: 2px solid var(--primary-color);
+}
+
+.subfolder {
+    margin: 8px 0;
+    padding: 8px;
+    background: var(--item-bg);
+    border-radius: 5px;
+}
+
+.landing-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px 0;
+    background: var(--item-bg);
+    border-radius: 5px;
+}
+
+.landing-link {
+    flex-grow: 1;
+    text-decoration: none;
+    color: var(--primary-color);
+    margin-left: 10px;
+}
+
+.landing-link:hover {
+    color: var(--hover-color);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #ecf0f1;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: var(--hover-color);
+    color: white;
+}
+
+.preview-container {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 375px;
+    height: 667px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+}
+
+.close-preview {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
